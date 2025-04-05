@@ -101,9 +101,7 @@ class SiswaModel extends Model
 
    public function getAllSiswa()
    {
-      // Query untuk mengambil NIS dan nama siswa
-      $query = $this->db->table('tb_siswa')->select('nis, nama_siswa')->get();
-      return $query->getResultArray();
+      return $this->orderBy('nama_siswa')->findAll();
    }
 
    public function getSiswaByNIS($nis)

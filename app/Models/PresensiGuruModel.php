@@ -136,4 +136,18 @@ class PresensiGuruModel extends Model implements PresensiInterface
 
       return $this->save($data);
    }
+
+   public function getAbsenByNUMPTK($numptk)
+   {
+      return $this->select('tb_presensi_guru.*')
+         ->join('tb_guru', 'tb_guru.id_guru = tb_presensi_guru.id_guru')
+         ->where(['tb_guru.numptk' => $numptk])
+         ->findAll();
+   }
+   public function cekAbsenHariIni($idguru, $tanggal)
+   {
+      return $this->where('id_guru', $idguru)
+         ->where('tanggal', $tanggal)
+         ->first();
+   }
 }

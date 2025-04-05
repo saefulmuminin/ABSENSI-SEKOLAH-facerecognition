@@ -69,12 +69,6 @@ switch ($context) {
                <p>Data Kelas & Jurusan</p>
             </a>
          </li>
-         <li class="nav-item <?= $context == 'qr' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?= base_url('admin/generate'); ?>">
-               <i class="material-icons">qr_code</i>
-               <p>Generate QR Code</p>
-            </a>
-         </li>
          <li class="nav-item <?= $context == 'laporan' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('admin/laporan'); ?>">
                <i class="material-icons">print</i>

@@ -2,47 +2,37 @@
 
 namespace App\Controllers;
 
-
+use App\Models\SiswaModel;
+use App\Models\GuruModel;
 
 class HomeController extends BaseController
 {
-    
+    protected $siswaModel;
+    protected $guruModel;
+
+    public function __construct()
+    {
+        $this->siswaModel = new SiswaModel();
+        $this->guruModel = new GuruModel();
+    }
 
     /**
      * Menampilkan halaman beranda (homepage).
      */
     public function index()
     {
+        // Ambil data siswa dan guru
+        $dataSiswa = $this->siswaModel->getAllSiswa();
+        $dataGuru = $this->guruModel->getAllGuru();
+
         // Data yang akan dikirim ke view
         $data = [
             'title' => 'Selamat Datang di Sistem Absensi Sekolah',
+            'siswa' => $dataSiswa,
+            'guru' => $dataGuru,
         ];
 
         // Tampilkan view home dengan data yang telah disiapkan
         return view('home/index', $data);
-    }
-
-    /**
-     * Menampilkan halaman tentang (about).
-     */
-    public function about()
-    {
-        $data = [
-            'title' => 'Tentang Kami',
-        ];
-
-        return view('home/about', $data);
-    }
-
-    /**
-     * Menampilkan halaman kontak (contact).
-     */
-    public function contact()
-    {
-        $data = [
-            'title' => 'Hubungi Kami',
-        ];
-
-        return view('home/contact', $data);
     }
 }

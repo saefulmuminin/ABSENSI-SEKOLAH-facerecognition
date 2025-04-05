@@ -7,72 +7,110 @@
     <title><?= $title ?></title>
     <script src="<?= base_url('public/assets/js/face-api.min.js') ?>"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
+        /* Background Gradient */
+        body {
+            background-image: url('public/assets/siswa.svg');
+            min-height: 100vh;
+        }
+
         /* Animasi fade-in dan fade-out */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
         }
+
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
         }
+
         .fade-out {
             animation: fadeOut 0.5s ease-in-out;
         }
 
-        /* Pastikan video dan canvas memiliki ukuran dan posisi yang sama */
+        /* Video Container */
         .video-container {
             position: relative;
             width: 640px;
             height: 480px;
             margin: 0 auto;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        #video, #overlay {
+
+        #video,
+        #overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
+
         #overlay {
-            z-index: 10; /* Pastikan canvas di atas video */
+            z-index: 10;
+            /* Pastikan canvas di atas video */
         }
     </style>
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">Absensi <?= ucfirst($waktu) ?></h1>
-        <div class="flex justify-center">
-            <div class="video-container">
-                <video id="video" class="rounded-lg shadow-lg" width="640" height="480" autoplay></video>
-                <canvas id="overlay" class="absolute top-0 left-0"></canvas>
-            </div>
-        </div>
-        <div id="messageDiv" class="mt-4 text-center text-green-600 font-semibold hidden fade-in"></div>
-        <div id="hasilScan" class="mt-4 text-center"></div>
-        <div id="infoCard" class="mt-6 hidden">
-            <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold text-gray-800" id="infoNama"></h2>
-                <p class="text-gray-600" id="infoNIS"></p>
-                <p class="text-gray-600" id="infoStatus"></p>
-            </div>
-        </div>
-        <div id="loadingIndicator" class="mt-6 text-center hidden">
-            <div class="inline-flex items-center">
-                <svg class="animate-spin h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span class="ml-2 text-gray-700">Memproses...</span>
+<body>
+<div class="container flex justify-center items-center min-h-screen ">
+    
+    <div class="grid grid-cols-12 px-4">
+        <!-- Video Container -->
+        <div class="col-span-12 flex justify-center mx-auto">
+            <div class="video-container text-center">
+                <video id="video" width="640" height="480" autoplay></video>
+                <canvas id="overlay"></canvas>
+                <div id="messageDiv" class="mt-4 text-lg font-semibold hidden fade-in"></div>
+                <div id="hasilScan" class="mt-4 text-lg"></div>
+                <div id="infoCard" class="mt-6 hidden">
+                    <div class="info-card max-w-sm mx-auto p-6 bg-white rounded-lg shadow-lg">
+                        <h2 class="text-2xl font-bold" id="infoNama"></h2>
+                        <p class="text-gray-700" id="infoNUPTK"></p>
+                        <p class="text-gray-700" id="infoStatus"></p>
+                    </div>
+                </div>
+                <div id="loadingIndicator" class="mt-6 text-center hidden">
+                    <div class="inline-flex items-center">
+                        <svg class="animate-spin h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        <span class="ml-2 text-white">Memproses...</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+ 
+
 
     <!-- Tambahkan elemen audio untuk suara saat absen berhasil -->
     <audio id="successSound" src="<?= base_url('public/assets/audio/beep.mp3') ?>"></audio>

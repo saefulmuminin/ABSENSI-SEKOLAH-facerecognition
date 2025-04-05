@@ -54,7 +54,9 @@ $routes->get('/about', 'HomeController::about');
 // Route for the contact page
 $routes->get('/contact', 'HomeController::contact');
 
-
+$routes->get('masukguru', 'FaceRecognitionGuru::index/masuk'); // http://localhost/ABSENSI-SEKOLAH-facerecognition/masuk
+$routes->get('pulangguru', 'FaceRecognitionGuru::index/pulang'); 
+$routes->post('/face-recognition/cekWajahGuru', 'FaceRecognitionGuru::cekWajahGuru');
 
 
 $routes->get('masuk', 'FaceRecognition::index/masuk'); // http://localhost/ABSENSI-SEKOLAH-facerecognition/masuk
