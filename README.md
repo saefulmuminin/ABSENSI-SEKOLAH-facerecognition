@@ -48,6 +48,7 @@ npm install
 php spark serve
 ```
 ### 3. login password
-php spark serve
+```
 Role	Username	Password
 Admin	admin	admin
+```
