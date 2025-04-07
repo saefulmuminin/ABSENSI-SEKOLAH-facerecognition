@@ -36,7 +36,7 @@ Rename file `.env.example` menjadi `.env`, lalu edit isinya sesuai koneksi datab
 
 ```env
 database.default.hostname = localhost
-database.default.database = absensi_sekolah
+database.default.database = absensi
 database.default.username = root
 database.default.password =
 database.default.DBDriver = MySQLi
