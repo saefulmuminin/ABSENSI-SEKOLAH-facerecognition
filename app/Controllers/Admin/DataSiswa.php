@@ -113,7 +113,7 @@ class DataSiswa extends BaseController
 
       // Proses penyimpanan gambar
       $imageFileNames = [];
-      for ($i = 1; $i <= 5; $i++) {
+      for ($i = 1; $i <= 15; $i++) {
          if ($this->request->getPost("capturedImage$i")) {
             $base64Data = explode(',', $this->request->getPost("capturedImage$i"))[1];
             $imageData = base64_decode($base64Data);
@@ -185,7 +185,7 @@ class DataSiswa extends BaseController
 
       // Proses penyimpanan gambar (jika ada gambar baru)
       $imageFileNames = [];
-      for ($i = 1; $i <= 5; $i++) {
+      for ($i = 1; $i <= 15; $i++) {
          if ($this->request->getPost("capturedImage$i")) {
             $base64Data = explode(',', $this->request->getPost("capturedImage$i"))[1];
             $imageData = base64_decode($base64Data);

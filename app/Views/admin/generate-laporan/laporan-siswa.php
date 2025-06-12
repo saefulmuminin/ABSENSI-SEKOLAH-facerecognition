@@ -6,7 +6,7 @@
       <td><img src="<?= base_url('public/assets/img/logo_sekolah.png'); ?>" width="100px" height="100px"></img></td>
       <td width="100%">
          <h2 align="center">DAFTAR HADIR SISWA</h2>
-         <h4 align="center">SMK 12369 HONGKONG</h4>
+         <h4 align="center">daarus</h4>
          <h4 align="center">TAHUN PELAJARAN 2025/2026</h4>
       </td>
       <td>

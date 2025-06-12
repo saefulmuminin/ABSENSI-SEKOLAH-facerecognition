@@ -44,7 +44,7 @@
       <a href="#hero" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="public/assets/images.jpeg" alt="">
-        <h5 class="sitename">Daruhsaadah</h5>
+        <h5 class="sitename">daarus</h5>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src="public/assets2/img/face.png" class="img-fluid animated" alt="Absensi Face Recognition">
+            <img src="public/assets2/img/home.jpg" class="img-fluid animated" alt="Absensi Face Recognition">
           </div>
         </div>
       </div>
